@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <Canvas className="canvas" >
       <ambientLight intensity={0.5} />
-      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
+      <spotLight position={[10, -3, 10]} angle={0.15} penumbra={1} />
       <Suspense fallback={null}>
         <ScrollControls pages={4} damping={0.1}>
           <Scroll>

@@ -1,27 +1,31 @@
+import * as THREE from 'three'
+import { useSpring, animated } from '@react-spring/three'
 import { Image, Text, useCursor } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
-import { easing } from "maath";
-import React, { useRef, useState } from "react";
+import { useFrame, useThree } from '@react-three/fiber';
+import React, { useEffect, useRef, useState } from "react";
+import { Vector3 } from 'three';
 
-function Frame(props) {
+function Frame(props, q = new THREE.Quaternion(), p = new THREE.Vector3()) {
   const GOLDENRATIO = 1.61803398875;
 
-  const image = useRef()
+  const image = useRef();
   const frame = useRef();
 
+
+  const [clicked, setClicked] = useState(false);
   const [hovered, setHovered] = useState(false);
   useCursor(hovered)
-  useFrame((state, delta) => {
-    easing.dampC(frame.current.material.color, hovered ? 'orange' : 'blue', 0.2, delta)
-  })
-
+  const { color } = useSpring({color: hovered ? 'aquamarine' : 'white'})
 
   const text = "Text";
-  const imagePath = "../../../public/boat.png";
+  const imagePath = "../../../boat.png";
+
+  const { camera } = useThree()
+
 
   return (
     <group {...props}>
-      <mesh scale={[1, GOLDENRATIO, 0.05]} onPointerOver={(e) => (e.stopPropagation(), setHovered(true))} onPointerOut={() => setHovered(false)}>
+      <mesh scale={[1, GOLDENRATIO, 0.05]} onClick={() => setClicked(!clicked)} onPointerOver={(e) => (e.stopPropagation(), setHovered(true))} onPointerOut={() => setHovered(false)}>
         <boxGeometry args={[1, 1, 1]} />
         <meshStandardMaterial
           color={"#151515"}
@@ -36,9 +40,9 @@ function Frame(props) {
           position={[0, 0, 0.2]}
         >
           <boxGeometry />
-          <meshBasicMaterial toneMapped={false} fog={false} />
+          <animated.meshBasicMaterial color={color} toneMapped={false} fog={false} />
         </mesh>
-        {/* <Image raycast={() => null} ref={image} position={[0, 0, 0.7]} url={imagePath} /> */}
+        <Image scale={0.85} raycast={() => null} ref={image} position={[0, 0, 0.7]} url={imagePath} />
       </mesh>
 
       <Text
