@@ -8,24 +8,26 @@ import { Vector3 } from 'three';
 function Frame(props, q = new THREE.Quaternion(), p = new THREE.Vector3()) {
   const GOLDENRATIO = 1.61803398875;
 
-  const image = useRef();
+  // Change the color of the frame
   const frame = useRef();
-
-
-  const [clicked, setClicked] = useState(false);
   const [hovered, setHovered] = useState(false);
   useCursor(hovered)
   const { color } = useSpring({color: hovered ? 'aquamarine' : 'white'})
 
+  // Set the text near the frame
   const text = "Text";
+
+  // Set the image in the frame (example)
+  const image = useRef();
   const imagePath = "../../../boat.png";
 
-  const { camera } = useThree()
+
+
 
 
   return (
     <group {...props}>
-      <mesh scale={[1, GOLDENRATIO, 0.05]} onClick={() => setClicked(!clicked)} onPointerOver={(e) => (e.stopPropagation(), setHovered(true))} onPointerOut={() => setHovered(false)}>
+      <mesh scale={[1, GOLDENRATIO, 0.05]} onPointerOver={(e) => (e.stopPropagation(), setHovered(true))} onPointerOut={() => setHovered(false)}>
         <boxGeometry args={[1, 1, 1]} />
         <meshStandardMaterial
           color={"#151515"}
