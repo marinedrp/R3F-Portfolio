@@ -1,13 +1,13 @@
-import * as THREE from 'three'
-import { useFrame } from "@react-three/fiber";
-import React, { useEffect, useRef, useState } from "react";
-import Frame from "./Frame";
+import * as THREE from 'three';
+import { useFrame } from '@react-three/fiber';
+import { useEffect, useRef, useState } from 'react';
+import Frame from './Frame';
 import { easing } from 'maath';
 
 function Frames() {
   const [clicked, setClicked] = useState(null);
-  let q = new THREE.Quaternion()
-  let p = new THREE.Vector3()
+  let q = new THREE.Quaternion();
+  let p = new THREE.Vector3();
   const ref = useRef();
 
   useEffect(() => {
@@ -25,8 +25,11 @@ function Frames() {
     easing.damp3(state.camera.position, p, 0.4, delta);
     easing.dampQ(state.camera.quaternion, q, 0.4, delta);
   });
-  
 
+
+  // TODO disable scroll controls when a frame is clicked?
+  // TODO make the website responsive
+  
   const handleFrameClick = (e) => {
     e.stopPropagation();
     if (clicked === e.object) {
@@ -36,19 +39,18 @@ function Frames() {
     }
   };
 
+  console.log()
+
   return (
-    <group
-      ref={ref}
-      onClick={handleFrameClick}
-      onPointerMissed={() => setClicked(null)}
-    >
+    <group position={[window.innerWidth / 138, 0, 0]} ref={ref} onClick={handleFrameClick} onPointerMissed={() => setClicked(null)}>
       {/* Back */}
-      <Frame position={[0.8, -7.6, 1.3]} />
-      <Frame position={[-0.8, -7.6, 1.3]} />
+      {/* vertical scroll: x: x, y: -8.2, z: z */}
+      <Frame position={[0.8, 0, 1.3]} />
+      <Frame position={[-0.8, 0, 1.3]} />
       {/* Right */}
-      <Frame position={[2.2, -7.6, 2.1]} rotation={[0, -Math.PI / 2.5, 0]} />
+      <Frame position={[2.2, 0, 2.1]} rotation={[0, -Math.PI / 2.5, 0]} />
       {/* Left */}
-      <Frame position={[-2.2, -7.6, 2.1]} rotation={[0, Math.PI / 2.5, 0]} />
+      <Frame position={[-2.2, 0, 2.1]} rotation={[0, Math.PI / 2.5, 0]} />
     </group>
   );
 }

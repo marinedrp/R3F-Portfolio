@@ -20,28 +20,20 @@
     background: #111113;
 }
 
-.circle{
-  width: 50px;
-  height: 50px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 50%;
-  pointer-events: none;
+.main-div{
+    display: flex;
+    flex-direction: row;
+    width: 400vw;
 }
 
 .section {
     color: white;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     font-family: 'Exo 2', sans-serif;
-    padding-right: 10%;
-    padding-left: 10%;
+    width: 100vw;
     height: 100vh;
     will-change: transform;
-    justify-content: flex-end;
-    align-items: flex-start;
     border: 1px solid white;
 }
 

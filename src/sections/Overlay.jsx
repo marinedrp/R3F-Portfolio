@@ -6,12 +6,12 @@ import Contact from './4-Contact/Contact'
 
 function Overlay() {
   return (
-    <>
+    <div className='main-div'>
     <About />
     <Projects />
     <Skills />
     <Contact />
-    </>
+    </div>
   )
 }
 

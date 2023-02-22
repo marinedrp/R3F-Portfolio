@@ -1,9 +1,7 @@
 import * as THREE from 'three'
 import { useSpring, animated } from '@react-spring/three'
 import { Image, Text, useCursor } from "@react-three/drei";
-import { useFrame, useThree } from '@react-three/fiber';
-import React, { useEffect, useRef, useState } from "react";
-import { Vector3 } from 'three';
+import React, { useRef, useState } from "react";
 
 function Frame(props, q = new THREE.Quaternion(), p = new THREE.Vector3()) {
   const GOLDENRATIO = 1.61803398875;
