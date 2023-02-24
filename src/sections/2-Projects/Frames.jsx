@@ -42,7 +42,7 @@ function Frames() {
   console.log()
 
   return (
-    <group position={[window.innerWidth / 138, 0, 0]} ref={ref} onClick={handleFrameClick} onPointerMissed={() => setClicked(null)}>
+    <group position={[14, 0, 0]} ref={ref} onClick={handleFrameClick} onPointerMissed={() => setClicked(null)}>
       {/* Back */}
       {/* vertical scroll: x: x, y: -8.2, z: z */}
       <Frame position={[0.8, 0, 1.3]} />
