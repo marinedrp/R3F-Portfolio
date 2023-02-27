@@ -1,7 +1,7 @@
 import "./App.css";
 import { Canvas } from "@react-three/fiber";
 import Overlay from "./sections/Overlay";
-import {Environment, OrbitControls, Scroll, ScrollControls } from "@react-three/drei";
+import {Environment, Html, OrbitControls, Scroll, ScrollControls, Sparkles, Stars } from "@react-three/drei";
 import Ground from './sections/2-Projects/Ground'
 import { Suspense } from "react";
 import Frames from "./sections/2-Projects/Frames";

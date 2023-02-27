@@ -21,7 +21,7 @@ function Cinema({ vec = new Vector3(), ...props }) {
 
   const { nodes, materials } = useGLTF("../../../screen/screen.gltf");
 
-  const texture = useVideoTexture(source);
+  const texture = useVideoTexture(source, {loop: false});
 
   const [screenMaterial, setScreenMaterial] = useState(null);
 
