@@ -12,7 +12,7 @@
   "dependencies": {
     "@react-spring/three": "^9.6.1",
     "@react-spring/web": "^9.6.1",
-    "@react-three/drei": "^9.56.25",
+    "@react-three/drei": "^9.56.28",
     "@react-three/fiber": "^8.11.2",
     "@types/three": "^0.149.0",
     "dotenv": "^16.0.3",

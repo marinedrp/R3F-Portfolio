@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 
 // Serve API requests from the router
-app.use('/', router);
+app.use('/api', router);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server listening at http://localhost:${process.env.PORT}`);

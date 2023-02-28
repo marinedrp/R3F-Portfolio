@@ -1,7 +1,11 @@
 import express from "express";
-import nodemailer from 'nodemailer'
+import nodemailer from "nodemailer";
 
 const router = express.Router();
+
+router.get("/", async (req, res) => {
+  res.json({ message: "Everything good!" });
+});
 
 router.post("/email", async (req, res) => {
   const myEmail = process.env.MY_EMAIL;
@@ -15,21 +19,20 @@ router.post("/email", async (req, res) => {
       pass: process.env.TRANSPORTER_PASSWORD,
     },
   });
-  
+
   try {
     await transporter.sendMail({
-        from: `"${firstName} ${lastName}" <${process.env.TRANSPORTER_EMAIL}>`,
-        to: myEmail,
-        subject: `${subject}`,
-        text: `${message}`,
-        html: `${message} \n\n <p>${firstName} ${lastName}'s email address: ${email}</p>`,
-      })
+      from: `"${firstName} ${lastName}" <${process.env.TRANSPORTER_EMAIL}>`,
+      to: myEmail,
+      subject: `${subject}`,
+      text: `${message}`,
+      html: `${message} \n\n <p>${firstName} ${lastName}'s email address: ${email}</p>`,
+    });
     res.json({ message: "Message sent!" });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.status(400).json({ message: "Could not send the email!" });
   }
-
 });
 
 export default router;
