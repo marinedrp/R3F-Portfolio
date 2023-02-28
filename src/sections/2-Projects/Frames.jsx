@@ -18,7 +18,7 @@ function Frames() {
       clicked.updateWorldMatrix(true, true);
       clicked.localToWorld(p.set(0, 0, 25));
       clicked.getWorldQuaternion(q);
-    } else if (clicked === null) {
+    } else {
       p.set(0, 0, 5.5);
       q.identity();
     }
