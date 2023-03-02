@@ -6,6 +6,7 @@ import Ground from './sections/2-Projects/Ground'
 import { Suspense } from "react";
 import Frames from "./sections/2-Projects/Frames";
 import Cinema from "./sections/3-Skills/Cinema";
+import Podium from "./sections/4-Contact/Podium";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
       <Suspense fallback={null}>
         <ScrollControls horizontal={true} pages={4} damping={0.8}>
           <Scroll>
+            <Podium />
             <Cinema />
             <Frames />
             <Ground />

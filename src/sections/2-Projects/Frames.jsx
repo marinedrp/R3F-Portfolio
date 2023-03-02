@@ -54,12 +54,12 @@ function Frames() {
           curveSegments={20}
           bevelThickness={0.1}
           height={0.02}
-          lineHeight={0.1}
+          lineHeight={0.6}
           letterSpacing={-0.03}
           size={0.2}
           font="/Inter_Bold.json">
           {`Projects`}
-          <meshStandardMaterial metalness={0.9} roughness={0} color={'white'} />
+          <meshStandardMaterial metalness={1} roughness={0} color={'white'} />
         </Text3D>
         </Center>
       <Frame position={[0, 0, -1.2]} isHTML={HTML} contentPath={path} color1={'#222'} color2={'grey'} size={1.5} text={'Please note that the websites will be displayed in a responsive format optimized for tablet viewing.'} textPosition={0.8} />
@@ -96,7 +96,7 @@ function Frames() {
       <Frame position={[-2, 0, -0.4]} rotation={[0, Math.PI / 2.5, 0]} isHTML={false} contentPath={"../../../project2.png"} size={1.2} text={'Mingle\n\nSocial media platform where users can connect with the world, share pictures, belong to communities and stay up-to-date on the latest information and trends.\n\nFront-End: Handlebars, HTML, CSS, Bootstrap\n\nBack-End: Node.js, Express, MongoDB, Cloudinary'} textPosition={0.65} />
 
       {/* Right */}
-      <Frame position={[2, 0, -0.4]} rotation={[0, -Math.PI / 2.8, 0]} isHTML={false} contentPath={"../../../hill.png"} size={1.2} text={"My Portfolio\n\nFront-End: React Three Fiber (Renderer for Three.js), React Spring\n\nBack-End: Node.js, Nodemailer"} textPosition={0.65}/>
+      <Frame position={[2, 0, -0.4]} rotation={[0, -Math.PI / 2.8, 0]} isHTML={false} contentPath={"../../../project2.png"} size={1.2} text={"My Portfolio\n\nFront-End: React Three Fiber (Renderer for Three.js), React Spring\n\nBack-End: Node.js, Nodemailer"} textPosition={0.65}/>
       <Frame position={[2.3, 0, 2.1]} rotation={[0, -Math.PI / 2.5, 0]} isHTML={false} contentPath={"../../../project1.png"} size={1.6} text={"Meow-Knight's Tale\n\n2D side-scrolling RPG playable on browsers.\n\nTech Stack: Vanilla Javascript, HTML Canvas and CSS."} textPosition={0.85} />
      
     </group>

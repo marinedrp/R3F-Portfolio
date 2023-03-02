@@ -6,7 +6,7 @@ function Ground() {
   return (
     <mesh position={[15, -0.8, 0]} rotation={[-Math.PI / 2, 0, 0]}>
       {/* vertical scroll: x: x, y: -9, z: z */}
-      <planeGeometry args={[50, 50]} />
+      <planeGeometry args={[65, 50]} />
       <MeshReflectorMaterial
             blur={[500, 100]}
             resolution={2048}

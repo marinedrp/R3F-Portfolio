@@ -120,8 +120,7 @@ function Cinema({ vec = new Vector3(), ...props }) {
         fov={40}
         aspect={16 / 9}
         near={0.01}
-        far={6}
-      ></PerspectiveCamera>
+        far={6} />
     </>
   );
 }
