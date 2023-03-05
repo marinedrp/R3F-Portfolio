@@ -1,7 +1,7 @@
 import "./App.css";
 import { Canvas } from "@react-three/fiber";
 import Overlay from "./sections/Overlay";
-import {Environment, Html, OrbitControls, Scroll, ScrollControls, Sparkles, Stars } from "@react-three/drei";
+import {Environment, Html, OrbitControls, Scroll, ScrollControls, Sparkles, Stars, Stats } from "@react-three/drei";
 import Ground from './sections/2-Projects/Ground'
 import { Suspense } from "react";
 import Frames from "./sections/2-Projects/Frames";
@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="App">
-      <Canvas className="canvas" >
+      <Canvas shadows className="canvas" >
       <ambientLight intensity={0.4} />
       <Suspense fallback={null}>
         <ScrollControls horizontal={true} pages={4} damping={0.8}>
@@ -21,6 +21,7 @@ function App() {
             <Cinema />
             <Frames />
             <Ground />
+            <Stats />
           </Scroll>
           <Scroll html style={{ width: "100%" }}>
             <Overlay />

@@ -1,6 +1,6 @@
 import { useSpring } from "@react-spring/web";
 import { Text, useCursor } from "@react-three/drei";
-import React, { useState } from "react";
+import { useState } from "react";
 import { animated } from "react-spring";
 
 export const TextWrapper = ({ text, position, customColor, onClick }) => {

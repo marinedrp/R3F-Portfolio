@@ -1,5 +1,4 @@
 import { MeshReflectorMaterial } from '@react-three/drei';
-import React from 'react'
 
 function Ground() {
   

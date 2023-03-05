@@ -1,13 +1,13 @@
 import * as THREE from "three";
 import { useSpring, animated } from "@react-spring/three";
 import { Html, Image, Text, useCursor } from "@react-three/drei";
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useThree } from "react-three-fiber";
 
 function Frame(props, q = new THREE.Quaternion(), p = new THREE.Vector3()) {
   const GOLDENRATIO = 1.61803398875;
   const { gl } = useThree();
-
+  
   // Change the color of the frame
   const frame = useRef();
   const [hovered, setHovered] = useState(false);

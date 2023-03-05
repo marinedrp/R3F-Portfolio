@@ -49,17 +49,17 @@ function Frames() {
   return (
     <group position={[14, 0.1, 0]} ref={ref} onClick={handleFrameClick} onPointerMissed={() => setClicked(null)}>
       {/* Back */}
-      <Center position={[0, -0.75, 1.5]}>
+      <Center position={[0, 1.3, 1.2]}>
         <Text3D
           curveSegments={20}
           bevelThickness={0.1}
           height={0.02}
           lineHeight={0.6}
           letterSpacing={-0.03}
-          size={0.2}
+          size={0.3}
           font="/Inter_Bold.json">
-          {`Projects`}
-          <meshStandardMaterial metalness={1} roughness={0} color={'white'} />
+          {`PROJECTS`}
+          <meshStandardMaterial metalness={0.3} roughness={0} color={'white'} />
         </Text3D>
         </Center>
       <Frame position={[0, 0, -1.2]} isHTML={HTML} contentPath={path} color1={'#222'} color2={'grey'} size={1.5} text={'Please note that the websites will be displayed in a responsive format optimized for tablet viewing.'} textPosition={0.8} />

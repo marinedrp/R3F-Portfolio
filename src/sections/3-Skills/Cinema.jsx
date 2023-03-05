@@ -1,6 +1,8 @@
 import {
+  Center,
   PerspectiveCamera,
   SpotLight,
+  Text3D,
   useGLTF,
   useVideoTexture,
 } from "@react-three/drei";
@@ -16,12 +18,12 @@ function Cinema({ vec = new Vector3(), ...props }) {
   const spotlight = useRef();
   const screen = useRef();
   const camera = useRef();
-
-  const [source, setSource] = useState("../../../video1.mp4");
+  
+  const [source, setSource] = useState("../../../default-video.mp4");
 
   const { nodes, materials } = useGLTF("../../../screen/screen.gltf");
 
-  const texture = useVideoTexture(source, {loop: false});
+  const texture = useVideoTexture(source, { loop: false });
 
   const [screenMaterial, setScreenMaterial] = useState(null);
 
@@ -79,7 +81,11 @@ function Cinema({ vec = new Vector3(), ...props }) {
       </group>
 
       <group position={[30, -0.8, 3.2]} rotation={[0, 3.4, 0]}>
-      <primitive position={[0, 1.02, 0]} scale={[0.4, 0.4, 0.4]} object={projector.scene} />
+        <primitive
+          position={[0, 1.02, 0]}
+          scale={[0.4, 0.4, 0.4]}
+          object={projector.scene}
+        />
         <mesh>
           <boxGeometry args={[0.5, 2, 0.5]} />
           <meshStandardMaterial color={"#666"} metalness={1} roughness={0.3} />
@@ -88,20 +94,39 @@ function Cinema({ vec = new Vector3(), ...props }) {
           customColor={"orange"}
           text="Front-End Development"
           position={[1.7, 0.7, 0.2]}
-          onClick={() => setSource("../../../10.mp4")}
+          onClick={() => setSource("../../../front-end.mp4")}
         />
         <TextWrapper
           customColor={"turquoise"}
           text="Back-End Development"
           position={[1.7, 0.5, 0.2]}
-          onClick={() => setSource("../../../video1.mp4")}
+          onClick={() => setSource("../../../back-end.mp4")}
         />
         <TextWrapper
           customColor={"hotpink"}
           text="Soft Skills"
           position={[1.7, 0.3, 0.2]}
-          onClick={() => setSource("../../../10.mp4")}
+          onClick={() => setSource("../../../soft-skills.mp4")}
         />
+
+        <Center position={[3, 0.2, 0.5]} rotation={[0, 3, 0]}>
+          <Text3D
+            curveSegments={20}
+            bevelThickness={0.1}
+            height={0.02}
+            lineHeight={0.6}
+            letterSpacing={-0.03}
+            size={0.3}
+            font="/Inter_Bold.json"
+          >
+            {`SKILLS`}
+            <meshStandardMaterial
+              metalness={0.3}
+              roughness={0}
+              color={"white"}
+            />
+          </Text3D>
+        </Center>
       </group>
 
       <SpotLight
@@ -120,7 +145,8 @@ function Cinema({ vec = new Vector3(), ...props }) {
         fov={40}
         aspect={16 / 9}
         near={0.01}
-        far={6} />
+        far={6}
+      />
     </>
   );
 }
