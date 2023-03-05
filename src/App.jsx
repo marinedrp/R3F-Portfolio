@@ -21,7 +21,7 @@ function App() {
             <Cinema />
             <Frames />
             <Ground />
-            <Stats />
+            <Stats /> 
           </Scroll>
           <Scroll html style={{ width: "100%" }}>
             <Overlay />

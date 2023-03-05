@@ -7,10 +7,10 @@ function Ground() {
       {/* vertical scroll: x: x, y: -9, z: z */}
       <planeGeometry args={[65, 50]} />
       <MeshReflectorMaterial
-            blur={[500, 100]}
-            resolution={2048}
+            blur={[300, 100]}
+            resolution={500}
             mixBlur={1}
-            mixStrength={20}
+            mixStrength={10}
             depthScale={1.2}
             minDepthThreshold={0.4}
             maxDepthThreshold={1.45}
