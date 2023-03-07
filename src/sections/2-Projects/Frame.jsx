@@ -7,12 +7,12 @@ import { useThree } from "react-three-fiber";
 function Frame(props, q = new THREE.Quaternion(), p = new THREE.Vector3()) {
   const GOLDENRATIO = 1.61803398875;
   const { gl } = useThree();
-  
+
   // Change the color of the frame
   const frame = useRef();
   const [hovered, setHovered] = useState(false);
   useCursor(hovered);
-  const { color } = useSpring({ color: hovered ? 'orange' : 'white' });
+  const { color } = useSpring({ color: hovered ? "orange" : "white" });
 
   return (
     <group {...props}>
@@ -29,7 +29,6 @@ function Frame(props, q = new THREE.Quaternion(), p = new THREE.Vector3()) {
           envMapIntensity={2}
         />
 
-
         <mesh
           ref={frame}
           raycast={() => null}
@@ -44,27 +43,32 @@ function Frame(props, q = new THREE.Quaternion(), p = new THREE.Vector3()) {
           />
         </mesh>
         {props.isHTML ? (
-    <Html
-    className="content"
-      position={[0, 0, 0.8]}
-      scale={[0.1, 0.1, 0.1]}
-      occlude="blending"
-      transform
-      portal={{ current: gl.domElement.parentNode }}
-    >
-      <div className="wrapper">
-      <iframe width={780} height={900} title="embed" src={props.contentPath} />
-      </div>
-    </Html>
-  ) : (
-    <Image
-    toneMapped={false}
-    scale={[0.8, 0.9, 0.8]}
-      raycast={() => null}
-      position={[0, 0, 0.7]}
-      url={props.contentPath}
-    />
-  )}
+          <Html
+            className="content"
+            position={[0, 0, 0.8]}
+            scale={[0.1, 0.1, 0.1]}
+            occlude="blending"
+            transform
+            portal={{ current: gl.domElement.parentNode }}
+          >
+            <div className="wrapper">
+              <iframe
+                width={780}
+                height={900}
+                title="embed"
+                src={props.contentPath}
+              />
+            </div>
+          </Html>
+        ) : (
+          <Image
+            toneMapped={false}
+            scale={[0.8, 0.9, 0.8]}
+            raycast={() => null}
+            position={[0, 0, 0.7]}
+            url={props.contentPath}
+          />
+        )}
       </mesh>
 
       <Text

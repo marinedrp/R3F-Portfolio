@@ -25,11 +25,10 @@ export const TextWrapper = ({ text, position, customColor, onClick }) => {
       onClick={onClick}
       onPointerOver={handlePointerOver}
       onPointerOut={handlePointerOut}
-      maxWidth={2}
+      maxWidth={5}
       anchorX="left"
       anchorY="top"
       position={position}
-      rotation={[0, 3, 0]}
       fontSize={0.1}
     >
       {text}

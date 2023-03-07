@@ -5,10 +5,9 @@ import {
   Text3D,
 } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import React, { useRef, useState } from "react";
+import { useRef} from "react";
 import * as THREE from 'three'
 import { Vector3 } from "three";
-import TextWrapper from "./TextWrapper";
 import { Screen } from "./Screen";
 import { Projector } from "./Projector";
 

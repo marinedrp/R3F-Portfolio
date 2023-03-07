@@ -30,18 +30,19 @@ function Podium() {
     "../../../mail.png",
   ]);
 
+
   return (
     <>
       <group position={[40, -0.3, 2.3]}>
         <MovingSpot
           depthBuffer={depthBuffer}
           color="blue"
-          position={[3, 3, 2]}
+          position={[3, 3, 2.3]}
         />
         <MovingSpot
           depthBuffer={depthBuffer}
           color="purple"
-          position={[1, 3, 1.5]}
+          position={[1, 3, 1.8]}
         />
         <mesh castShadow receiveShadow>
           <Box args={[0.5, 1, 0.3]} material={boxMaterial} />

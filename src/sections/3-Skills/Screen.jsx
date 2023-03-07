@@ -7,7 +7,7 @@ Source: https://sketchfab.com/3d-models/cinema-screen-2221cf86c46f4716bf7a904c64
 Title: Cinema Screen
 */
 
-import React, { useCallback, useRef } from "react";
+import { useRef } from "react";
 import { Decal, useGLTF, useVideoTexture } from "@react-three/drei";
 import { useFrame } from "react-three-fiber";
 import TextWrapper from "./TextWrapper";
@@ -21,23 +21,12 @@ export function Screen(props) {
   const softSkillsVideo = useVideoTexture("../../../soft-skills.mp4");
   const currentVideo = useRef(defaultVideo);
 
-  const handleClick1 = useCallback(() => {
-    currentVideo.current = frontEndVideo;
-  }, [currentVideo]);
-
-  const handleClick2 = useCallback(() => {
-    currentVideo.current = backEndVideo;
-  }, [currentVideo]);
-
-  const handleClick3 = useCallback(() => {
-    currentVideo.current = softSkillsVideo;
-  }, [currentVideo]);
-
   useFrame(() => {
     screen.current.children[0].material.map = currentVideo.current;
   });
 
   return (
+    <>
     <group {...props} dispose={null} scale={[0.5, 0.4, 0.4]}>
       <mesh geometry={nodes.Object_4.geometry} material={materials.black} />
       <mesh
@@ -54,28 +43,29 @@ export function Screen(props) {
           <meshBasicMaterial map={currentVideo.current} />
         </Decal>
       </mesh>
+      </group>
 
-      <group>
+      <group position={[26.5, -0.9, 3.4]} rotation={[0, 0.1, 0]}>
         <TextWrapper
           customColor={"orange"}
           text="Front-End Development"
           position={[1.7, 0.7, 0.2]}
-          onClick={handleClick1}
+          onClick={() => (currentVideo.current = frontEndVideo)}
         />
         <TextWrapper
           customColor={"turquoise"}
           text="Back-End Development"
           position={[1.7, 0.5, 0.2]}
-          onClick={handleClick2}
+          onClick={() => (currentVideo.current = backEndVideo)}
         />
         <TextWrapper
           customColor={"hotpink"}
           text="Soft Skills"
           position={[1.7, 0.3, 0.2]}
-          onClick={handleClick3}
+          onClick={() => (currentVideo.current = softSkillsVideo)}
         />
-      </group>
     </group>
+    </>
   );
 }
 
