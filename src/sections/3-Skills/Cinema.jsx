@@ -28,21 +28,7 @@ function Cinema({ vec = new Vector3(), ...props }) {
       <group position={[30, -0.8, 3.2]} rotation={[0, 3.4, 0]}>
         <Projector position={[0, 1.02, 0]} scale={[0.4, 0.4, 0.4]} />
         <Box args={[0.5, 2, 0.5]} material={boxMaterial} />
-        <TextWrapper
-          customColor={"orange"}
-          text="Front-End Development"
-          position={[1.7, 0.7, 0.2]}
-        />
-        <TextWrapper
-          customColor={"turquoise"}
-          text="Back-End Development"
-          position={[1.7, 0.5, 0.2]}
-        />
-        <TextWrapper
-          customColor={"hotpink"}
-          text="Soft Skills"
-          position={[1.7, 0.3, 0.2]}
-        />
+        
 
         <Center position={[3, 0.2, 0.5]} rotation={[0, 3, 0]}>
           <Text3D
