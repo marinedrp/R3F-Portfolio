@@ -1,33 +1,27 @@
 import * as THREE from "three";
 import {
   Box,
+  Cylinder,
   Decal,
-  RoundedBox,
+  Sphere,
   useDepthBuffer,
   useTexture,
 } from "@react-three/drei";
 import MovingSpot from "./MovingSpot";
-import { useMemo } from "react";
+
+const boxMaterial = new THREE.MeshStandardMaterial({
+  color: "#555",
+  metalness: 1,
+  roughness: 0.3,
+});
+
+const whiteMaterial = new THREE.MeshStandardMaterial({
+  color: "white",
+  metalness: 1,
+  roughness: 0.5,
+});
 
 function Podium() {
-  const boxMaterial = useMemo(
-    () =>
-      new THREE.MeshStandardMaterial({
-        color: "#666",
-        metalness: 1,
-        roughness: 0.3,
-      }),
-    []
-  );
-
-  const roundedBoxMaterial = useMemo(
-    () =>
-      new THREE.MeshStandardMaterial({
-        color: "white",
-        metalness: 1,
-        roughness: 0.5,
-      })
-  );
   const depthBuffer = useDepthBuffer({ frames: 1 });
 
   const [github, linkedIn, email] = useTexture([
@@ -38,7 +32,7 @@ function Podium() {
 
   return (
     <>
-      <group position={[45, -0.3, 2.5]}>
+      <group position={[40, -0.3, 2.3]}>
         <MovingSpot
           depthBuffer={depthBuffer}
           color="blue"
@@ -47,65 +41,58 @@ function Podium() {
         <MovingSpot
           depthBuffer={depthBuffer}
           color="purple"
-          position={[1, 3, 1]}
+          position={[1, 3, 1.5]}
         />
         <mesh castShadow receiveShadow>
           <Box args={[0.5, 1, 0.3]} material={boxMaterial} />
-          <RoundedBox
+          <Cylinder
             castShadow
             receiveShadow
             position={[0, 0.7, 0]}
-            args={[0.4, 0.4, 0.1]}
-            radius={0.05}
-            smoothness={4}
-            material={roundedBoxMaterial}
+            args={[0.2, 0.2, 0.4]}
+            material={whiteMaterial}
           >
             <Decal
-              position={[0, 0, 0.1]}
+              position={[0, 0, 0.2]}
               rotation={[0, 0, 0]}
-              scale={0.25}
+              scale={0.28}
               map={linkedIn}
             />
-          </RoundedBox>
+          </Cylinder>
         </mesh>
         <mesh castShadow receiveShadow position={[0, -0.25, 0.3]}>
           <Box args={[0.5, 0.5, 0.3]} material={boxMaterial} />
-          <RoundedBox
+          <Sphere
+            args={[0.2, 32, 16]}
             castShadow
             receiveShadow
             position={[0, 0.45, 0]}
-            args={[0.4, 0.4, 0.1]}
-            radius={0.05}
-            smoothness={4}
-            material={roundedBoxMaterial}
+            material={whiteMaterial}
           >
             <Decal
-              position={[0, 0, 0.1]}
               rotation={[0, 0, 0]}
-              scale={0.25}
+              position={[0, 0, 0.1]}
+              scale={0.28}
               map={github}
-              map-anisotropy={16}
             />
-          </RoundedBox>
+          </Sphere>
         </mesh>
         <mesh castShadow receiveShadow position={[0.5, -0.25, 0]}>
           <Box args={[0.5, 0.5, 0.3]} material={boxMaterial} />
-          <RoundedBox
+          <Cylinder
+            args={[0.2, 0.2, 0.4]}
             castShadow
             receiveShadow
             position={[0, 0.45, 0]}
-            args={[0.4, 0.4, 0.1]}
-            radius={0.05}
-            smoothness={4}
-            material={roundedBoxMaterial}
+            material={whiteMaterial}
           >
             <Decal
-              position={[0, 0, 0.1]}
+              position={[0, 0, 0.2]}
               rotation={[0, 0, 0]}
-              scale={0.25}
+              scale={0.28}
               map={email}
             />
-          </RoundedBox>
+          </Cylinder>
         </mesh>
       </group>
     </>
