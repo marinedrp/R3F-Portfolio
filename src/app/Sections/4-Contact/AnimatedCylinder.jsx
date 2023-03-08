@@ -15,7 +15,7 @@ function AnimatedCylinder({position, logo, url}) {
         args={[0.2, 0.2, 0.4]}
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
-        onClick={() => window.location.href = url}
+        onClick={() => window.open(url)}
       >
         <animated.meshStandardMaterial
           color={'white'}

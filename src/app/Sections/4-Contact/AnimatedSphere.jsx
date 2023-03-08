@@ -14,7 +14,7 @@ function AnimatedSphere({ position, logo, url }) {
       position={position}
       onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
       onPointerOut={() => setHovered(false)}
-      onClick={() => window.location.href = url}
+      onClick={() => window.open(url)}
     >
       <animated.meshStandardMaterial
         color={'white'}

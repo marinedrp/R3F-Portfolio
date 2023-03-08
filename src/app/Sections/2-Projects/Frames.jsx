@@ -7,11 +7,12 @@ import { Center } from "@react-three/drei";
 import Title3D from "../../Components/Title3D";
 import { projects } from "./ProjectList";
 
-function Frames() {
+function Frames({ toggleScroll }) {
   const [clicked, setClicked] = useState(null);
   let q = new THREE.Quaternion();
   let p = new THREE.Vector3();
   const [path, setPath] = useState("https://plantastic-shop.netlify.app/");
+
 
   useEffect(() => {
     if (clicked) {
@@ -35,8 +36,10 @@ function Frames() {
     e.stopPropagation();
     if (clicked === e.object) {
       setClicked(null);
+      // toggleScroll();
     } else {
       setClicked(e.object);
+      // toggleScroll();
     }
   };
 
