@@ -55,9 +55,11 @@ export function Screen(props) {
         {categories.map((category, index) => 
            <TextWrapper
            key={index}
-           customColor={category.customColor}
+           customColor1={category.customColor}
+           customColor2={'white'}
            text={category.text}
            position={category.position}
+           fontSize={0.1}
            onClick={() => (currentVideo.current = category.video)}
          />
         )}

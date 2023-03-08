@@ -3,12 +3,12 @@ import { Text, useCursor } from "@react-three/drei";
 import { useState } from "react";
 import { animated } from "react-spring";
 
-export const TextWrapper = ({ text, position, customColor, onClick }) => {
+export const TextWrapper = ({ text, position, customColor1, customColor2, onClick, fontSize }) => {
   const AnimatedText = animated(Text);
   const [hovered, setHovered] = useState(false);
   useCursor(hovered);
   
-  const { color } = useSpring({color: hovered ? customColor : 'white'})
+  const { color } = useSpring({color: hovered ? customColor1 : customColor2})
 
   const handlePointerOver = (e) => {
     e.stopPropagation();
@@ -30,7 +30,7 @@ export const TextWrapper = ({ text, position, customColor, onClick }) => {
       anchorX="left"
       anchorY="top"
       position={position}
-      fontSize={0.1}
+      fontSize={fontSize}
     >
       {text}
     </AnimatedText>

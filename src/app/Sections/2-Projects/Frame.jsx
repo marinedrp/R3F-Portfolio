@@ -3,6 +3,7 @@ import { useSpring, animated } from "@react-spring/three";
 import { Html, Image, Text, useCursor } from "@react-three/drei";
 import { useRef, useState } from "react";
 import { useThree } from "react-three-fiber";
+import TextWrapper from "../../Components/TextWrapper";
 
 function Frame(props, q = new THREE.Quaternion(), p = new THREE.Vector3()) {
   const GOLDENRATIO = 1.61803398875;
@@ -15,11 +16,13 @@ function Frame(props, q = new THREE.Quaternion(), p = new THREE.Vector3()) {
   const { color } = useSpring({ color: hovered ? "orange" : "white" });
 
   return (
-    <group {...props}>
+    <group position={props.position} rotation={props.rotation}>
       <mesh
         scale={[props.size, GOLDENRATIO, 0.05]}
         onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
         onPointerOut={() => setHovered(false)}
+        onClick={props.onClick}
+        onPointerMissed={props.onPointerMissed}
       >
         <boxGeometry args={[1, 1.1, 1]} />
         <meshStandardMaterial
@@ -71,16 +74,35 @@ function Frame(props, q = new THREE.Quaternion(), p = new THREE.Vector3()) {
         )}
       </mesh>
 
-      <Text
-        font='/Merriweather-Regular.ttf'
-        maxWidth={0.4}
-        anchorX="left"
-        anchorY="top"
-        position={[props.textPosition, 0.85, 0]}
-        fontSize={0.035}
-      >
-        {props.text}
-      </Text>
+      <group position={props.textPosition}>
+        <Text
+          font="/Merriweather-Black.ttf"
+          maxWidth={0.7}
+          anchorX="left"
+          anchorY="top"
+          fontSize={0.05}
+        >
+          {props.title}
+        </Text>
+        <TextWrapper
+          position={[0, -0.1, 0]}
+          fontSize={0.035}
+          customColor1={'white'}
+          customColor2={'orange'}
+          text={'Visit website'}
+          onClick={() => (window.location.href = props.url)} />
+        <Text
+          position={[0, -0.2, 0]}
+          font="/Merriweather-Regular.ttf"
+          maxWidth={0.5}
+          anchorX="left"
+          anchorY="top"
+          fontSize={0.035}
+        >
+          {props.text}
+        </Text>
+       
+      </group>
     </group>
   );
 }

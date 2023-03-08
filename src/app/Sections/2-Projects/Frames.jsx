@@ -20,32 +20,40 @@ function Frames() {
       rotation: [0, Math.PI / 2.5, 0],
       imagePath: "/project3.png",
       size: 1.6,
-      text: "Plantastic\n\nE-commerce website dedicated to providing a unique shopping experience for plant enthusiasts.\n\nFront-End: React, Chart.js, MDBootstrap\n\nBack-End: MongoDB, Express, Node.js, Stripe, Nodemailer, Cloudinary",
-      textPosition: 0.85,
+      title: 'PLANTASTIC',
+      text: "E-commerce website dedicated to providing a unique shopping experience for plant enthusiasts.\n\nFront-End: \n• React\n• Chart.js\n• MDBootstrap\n\nBack-End: \n• MongoDB\n• Express\n• Node.js\n• Stripe\n• Nodemailer\n• Cloudinary",
+      textPosition: [0.85, 0.85, 0],
+      url: 'https://plantastic-shop.netlify.app/'
     },
     {
       position: [-2, 0, -0.4],
       rotation: [0, Math.PI / 2.5, 0],
       imagePath: "/project2.png",
       size: 1.2,
-      text: "Mingle\n\nSocial media platform where users can connect with the world, share pictures, belong to communities and stay up-to-date on the latest information and trends.\n\nFront-End: Handlebars, HTML, CSS, Bootstrap\n\nBack-End: Node.js, Express, MongoDB, Cloudinary",
-      textPosition: 0.65,
+      title: 'MINGLE',
+      text: "Social media platform where users can connect with the world, share pictures, belong to communities and stay up-to-date on the latest information and trends.\n\nFront-End: \n• Handlebars\n• HTML\n• CSS\n• Bootstrap\n\nBack-End: \n• Node.js\n• Express\n• MongoDB\n• Cloudinary",
+      textPosition: [0.65, 0.85, 0],
+      url: 'https://mingle.adaptable.app/'
     },
     {
       position: [2.3, 0, 2.1],
       rotation: [0, -Math.PI / 2.5, 0],
       imagePath: "/project1.png",
       size: 1.6,
-      text: "Meow-Knight's Tale\n\n2D side-scrolling RPG playable on browsers.\n\nTech Stack: Vanilla Javascript, HTML Canvas and CSS.",
-      textPosition: 0.85,
+      title: "MEOW-KNIGHT'S TALE",
+      text: "2D side-scrolling Role-Playing Game.\n\nTech Stack:\n• Vanilla Javascript\n• HTML Canvas\n• CSS",
+      textPosition: [0.85, 0.85, 0],
+      url: "https://marinedrp.github.io/Meow-Knight/"
     },
     {
       position: [2, 0, -0.4],
       rotation: [0, -Math.PI / 2.5, 0],
       imagePath: "/project2.png",
       size: 1.2,
-      text: "My Portfolio\n\nFront-End: React Three Fiber (Renderer for Three.js), React Spring\n\nBack-End: Express, Node.js, Nodemailer",
-      textPosition: 0.65,
+      title: 'MY PORTFOLIO' ,
+      text: "Front-End:\n• React Three Fiber (Renderer for Three.js)\n• React Spring\n\nBack-End:\n• Express\n• Node.js\n• Nodemailer",
+      textPosition: [0.65, 0.85, 0],
+      url: window.location
     },
   ];
 
@@ -85,8 +93,6 @@ function Frames() {
     <group
       position={[14, 0.1, 0]}
       ref={ref}
-      onClick={handleFrameClick}
-      onPointerMissed={() => setClicked(null)}
     >
       {/* Back */}
       <Center position={[0, 1.3, 1.2]}>
@@ -101,6 +107,8 @@ function Frames() {
           "Please note that the websites will be displayed in a responsive format optimized for tablet viewing."
         }
         textPosition={0.8}
+        onClick={handleFrameClick}
+        onPointerMissed={() => setClicked(null)}
       />
       <Text
         maxWidth={0.4}
@@ -141,16 +149,22 @@ function Frames() {
       {/* vertical scroll: x: x, y: -8.2, z: z */}
 
       {projects.map((project, index) => (
+        <>
         <Frame
           key={index}
           position={project.position}
           rotation={project.rotation}
           contentPath={project.imagePath}
           size={project.size}
-          text={project.text}
-          textPosition={project.textPosition}
           isHTML={false}
+          onClick={handleFrameClick}
+          onPointerMissed={() => setClicked(null)}
+          textPosition={project.textPosition}
+          text={project.text}
+          url={project.url}
+          title={project.title}
         />
+      </>
       ))}
     </group>
   );
