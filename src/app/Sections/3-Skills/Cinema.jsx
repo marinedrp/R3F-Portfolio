@@ -27,7 +27,6 @@ function Cinema({ vec = new Vector3(), ...props }) {
       <group position={[30, -0.8, 3.2]} rotation={[0, 3.4, 0]}>
         <Projector position={[0, 1.02, 0]} scale={[0.4, 0.4, 0.4]} />
         <Box args={[0.5, 2, 0.5]} material={boxMaterial} />
-        
 
         <Center position={[3, 0.2, 0.5]} rotation={[0, 3, 0]}>
           <Text3D

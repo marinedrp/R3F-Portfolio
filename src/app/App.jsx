@@ -1,15 +1,14 @@
 import "./App.css";
 import { Canvas } from "@react-three/fiber";
-import Overlay from "./sections/Overlay";
 import {Environment, Html, OrbitControls, Scroll, ScrollControls, Sparkles, Stars, Stats } from "@react-three/drei";
-import Ground from './sections/2-Projects/Ground'
 import { Suspense } from "react";
-import Frames from "./sections/2-Projects/Frames";
-import Cinema from "./sections/3-Skills/Cinema";
-import Podium from "./sections/4-Contact/Podium";
+import Ground from "./Sections/2-Projects/Ground.jsx";
+import Cinema from "./Sections/3-Skills/Cinema.jsx";
+import Podium from "./Sections/4-Contact/Podium.jsx";
+import Overlay from "./Sections/Overlay.jsx";
+import Frames from "./Sections/2-Projects/Frames.jsx";
 
 function App() {
-
   return (
     <div className="App">
       <Canvas shadows className="canvas" >
@@ -17,11 +16,11 @@ function App() {
       <Suspense fallback={null}>
         <ScrollControls horizontal={true} pages={4} damping={0.8}>
           <Scroll>
-            <Podium />
-            <Cinema />
-            <Frames />
             <Ground />
-            <Stats /> 
+            <Frames />
+            <Cinema />
+            <Podium />
+            <Stats />
           </Scroll>
           <Scroll html style={{ width: "100%" }}>
             <Overlay />
