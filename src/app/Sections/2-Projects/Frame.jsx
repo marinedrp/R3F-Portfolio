@@ -22,7 +22,6 @@ function Frame(props, q = new THREE.Quaternion(), p = new THREE.Vector3()) {
         onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
         onPointerOut={() => setHovered(false)}
         onClick={props.onClick}
-        onPointerMissed={props.onPointerMissed}
       >
         <boxGeometry args={[1, 1.1, 1]} />
         <meshStandardMaterial
@@ -84,24 +83,82 @@ function Frame(props, q = new THREE.Quaternion(), p = new THREE.Vector3()) {
         >
           {props.title}
         </Text>
-        <TextWrapper
-          position={[0, -0.1, 0]}
-          fontSize={0.035}
-          customColor1={'white'}
-          customColor2={'orange'}
-          text={'Visit website'}
-          onClick={() => (window.location.href = props.url)} />
-        <Text
-          position={[0, -0.2, 0]}
-          font="/Merriweather-Regular.ttf"
-          maxWidth={0.5}
-          anchorX="left"
-          anchorY="top"
-          fontSize={0.035}
-        >
-          {props.text}
-        </Text>
-       
+        {props.isHTML ? (
+          <>
+            <TextWrapper
+              position={[0, -0.1, 0]}
+              fontSize={0.035}
+              customColor1={"white"}
+              customColor2={"orange"}
+              text={props.website1}
+              onClick={props.changeWebsite1}
+            />
+            <TextWrapper
+              position={[0, -0.2, 0]}
+              fontSize={0.035}
+              customColor1={"white"}
+              customColor2={"orange"}
+              text={props.website2}
+              onClick={props.changeWebsite2}
+            />
+            <TextWrapper
+              position={[0, -0.3, 0]}
+              fontSize={0.035}
+              customColor1={"white"}
+              customColor2={"orange"}
+              text={props.website3}
+              onClick={props.changeWebsite3}
+            />
+            <Text
+              position={[0, -0.4, 0]}
+              font="/Merriweather-Regular.ttf"
+              maxWidth={0.5}
+              anchorX="left"
+              anchorY="top"
+              fontSize={0.035}
+            >
+              {props.description}
+            </Text>
+          </>
+        ) : (
+          <>
+            <TextWrapper
+              position={[0, -0.1, 0]}
+              fontSize={0.035}
+              customColor1={"white"}
+              customColor2={"orange"}
+              text={"Visit website"}
+              onClick={() => (window.open(props.url1))}
+            />
+            <TextWrapper
+              position={[0, -0.2, 0]}
+              fontSize={0.035}
+              customColor1={"white"}
+              customColor2={"orange"}
+              text={props.visible ? ("Client") : ('Github Repository')}
+              onClick={() => (window.open(props.url2))}
+            />
+            <TextWrapper
+              position={[0, -0.3, 0]}
+              fontSize={0.035}
+              customColor1={"white"}
+              customColor2={"orange"}
+              text={props.visible ? ("Server") : ("")}
+              visible={props.visible}
+              onClick={() => (window.open(props.url3))}
+            />
+            <Text
+              position={props.visible ? ([0, -0.4, 0]) : ([0, -0.3, 0])}
+              font="/Merriweather-Regular.ttf"
+              maxWidth={0.5}
+              anchorX="left"
+              anchorY="top"
+              fontSize={0.035}
+            >
+              {props.description}
+            </Text>
+          </>
+        )}
       </group>
     </group>
   );
