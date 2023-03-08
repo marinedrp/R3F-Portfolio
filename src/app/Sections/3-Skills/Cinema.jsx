@@ -2,18 +2,18 @@ import {
   Box,
   Center,
   SpotLight,
-  Text3D,
 } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useRef} from "react";
+import { useMemo, useRef} from "react";
 import * as THREE from 'three'
 import { Vector3 } from "three";
 import { Screen } from "./Screen";
 import { Projector } from "./Projector";
+import Title3D from "../../Components/Title3D";
 
 function Cinema({ vec = new Vector3(), ...props }) {
   const spotlight = useRef();
-  const boxMaterial = new THREE.MeshStandardMaterial({color: "#555", metalness: 1, roughness: 0.3})
+  const boxMaterial = useMemo(() => new THREE.MeshStandardMaterial({color: "#555", metalness: 1, roughness: 0.3}), []) 
 
   useFrame(() => {
     spotlight.current.target.position.lerp(vec.set(-0.106, 1.1, 0), 0.1);
@@ -28,23 +28,8 @@ function Cinema({ vec = new Vector3(), ...props }) {
         <Projector position={[0, 1.02, 0]} scale={[0.4, 0.4, 0.4]} />
         <Box args={[0.5, 2, 0.5]} material={boxMaterial} />
 
-        <Center position={[3, 0.2, 0.5]} rotation={[0, 3, 0]}>
-          <Text3D
-            curveSegments={20}
-            bevelThickness={0.1}
-            height={0.02}
-            lineHeight={0.6}
-            letterSpacing={-0.03}
-            size={0.3}
-            font="/Inter_Bold.json"
-          >
-            {`SKILLS`}
-            <meshStandardMaterial
-              metalness={0.3}
-              roughness={0}
-              color={"white"}
-            />
-          </Text3D>
+        <Center position={[3, 0.15, 0.5]} rotation={[0, 3, 0]}>
+          <Title3D text={'SKILLS'} />
         </Center>
       </group>
 

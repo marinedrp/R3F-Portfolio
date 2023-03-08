@@ -72,6 +72,7 @@ function Frame(props, q = new THREE.Quaternion(), p = new THREE.Vector3()) {
       </mesh>
 
       <Text
+        font='/Merriweather-Regular.ttf'
         maxWidth={0.4}
         anchorX="left"
         anchorY="top"

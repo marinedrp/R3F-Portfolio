@@ -24,7 +24,7 @@ function Podium() {
   ]);
 
   return (
-      <group position={[45, -0.3, 2.3]} rotation={[0, 0.2, 0]}>
+      <group position={[40, -0.3, 2.3]} rotation={[0, 0.2, 0]}>
         <MovingSpot
           depthBuffer={depthBuffer}
           color="blue"

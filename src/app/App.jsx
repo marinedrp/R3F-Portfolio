@@ -2,11 +2,12 @@ import "./App.css";
 import { Canvas } from "@react-three/fiber";
 import {Environment, Html, OrbitControls, Scroll, ScrollControls, Sparkles, Stars, Stats } from "@react-three/drei";
 import { Suspense } from "react";
-import Ground from "./Sections/2-Projects/Ground.jsx";
-import Cinema from "./Sections/3-Skills/Cinema.jsx";
-import Podium from "./Sections/4-Contact/Podium.jsx";
-import Overlay from "./Sections/Overlay.jsx";
-import Frames from "./Sections/2-Projects/Frames.jsx";
+import Ground from "./Components/Ground";
+import Cinema from "./Sections/3-Skills/Cinema";
+import Podium from "./Sections/4-Contact/Podium";
+import Overlay from "./Sections/Overlay";
+import Frames from "./Sections/2-Projects/Frames";
+import ContactScene from "./Sections/4-Contact/ContactScene";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
             <Ground />
             <Frames />
             <Cinema />
-            <Podium />
+            <ContactScene />
             <Stats />
           </Scroll>
           <Scroll html style={{ width: "100%" }}>

@@ -25,6 +25,7 @@ export const TextWrapper = ({ text, position, customColor, onClick }) => {
       onClick={onClick}
       onPointerOver={handlePointerOver}
       onPointerOut={handlePointerOut}
+      font='/Merriweather-Regular.ttf'
       maxWidth={5}
       anchorX="left"
       anchorY="top"

@@ -10,7 +10,7 @@ Title: Cinema Screen
 import { useRef } from "react";
 import { Decal, useGLTF, useVideoTexture } from "@react-three/drei";
 import { useFrame } from "react-three-fiber";
-import TextWrapper from "./TextWrapper";
+import TextWrapper from "../../Components/TextWrapper";
 
 export function Screen(props) {
   const screen = useRef();
@@ -20,6 +20,12 @@ export function Screen(props) {
   const backEndVideo = useVideoTexture("../../../back-end.mp4");
   const softSkillsVideo = useVideoTexture("../../../soft-skills.mp4");
   const currentVideo = useRef(defaultVideo);
+
+  const categories = [
+    {text: "Front-End Development", customColor: 'orange', video: frontEndVideo, position: [1.7, 0.7, 0.2]},
+    {text: "Back-End Development", customColor: 'turquoise', video: backEndVideo, position: [1.7, 0.5, 0.2]},
+    {text: "Soft Skills", customColor: 'hotpink', video: softSkillsVideo, position: [1.7, 0.3, 0.2]}
+  ]
 
   useFrame(() => {
     screen.current.children[0].material.map = currentVideo.current;
@@ -46,24 +52,15 @@ export function Screen(props) {
       </group>
 
       <group position={[26.5, -0.9, 3.4]} rotation={[0, 0.1, 0]}>
-        <TextWrapper
-          customColor={"orange"}
-          text="Front-End Development"
-          position={[1.7, 0.7, 0.2]}
-          onClick={() => (currentVideo.current = frontEndVideo)}
-        />
-        <TextWrapper
-          customColor={"turquoise"}
-          text="Back-End Development"
-          position={[1.7, 0.5, 0.2]}
-          onClick={() => (currentVideo.current = backEndVideo)}
-        />
-        <TextWrapper
-          customColor={"hotpink"}
-          text="Soft Skills"
-          position={[1.7, 0.3, 0.2]}
-          onClick={() => (currentVideo.current = softSkillsVideo)}
-        />
+        {categories.map((category, index) => 
+           <TextWrapper
+           key={index}
+           customColor={category.customColor}
+           text={category.text}
+           position={category.position}
+           onClick={() => (currentVideo.current = category.video)}
+         />
+        )}
     </group>
     </>
   );
