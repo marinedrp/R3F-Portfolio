@@ -62,7 +62,7 @@ function Frames() {
           <meshStandardMaterial metalness={0.3} roughness={0} color={'white'} />
         </Text3D>
         </Center>
-      <Frame position={[0, 0, -1.2]} isHTML={HTML} contentPath={path} color1={'#222'} color2={'grey'} size={1.5} text={'Please note that the websites will be displayed in a responsive format optimized for tablet viewing.'} textPosition={0.8} />
+      <Frame position={[0, 0, -1.2]} isHTML={HTML} contentPath={path} size={1.5} text={'Please note that the websites will be displayed in a responsive format optimized for tablet viewing.'} textPosition={0.8} />
       <Text
       maxWidth={0.4}
       anchorX="left"

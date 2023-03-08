@@ -5,9 +5,9 @@
     padding: 0;
 }
 
-::-webkit-scrollbar{
+/* ::-webkit-scrollbar{
     display: none;
-}
+} */
 
 .App {
     width: 100vw;
