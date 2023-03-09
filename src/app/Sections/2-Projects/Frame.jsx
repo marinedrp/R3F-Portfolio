@@ -5,15 +5,16 @@ import { useRef, useState } from "react";
 import { useThree } from "react-three-fiber";
 import TextWrapper from "../../Components/TextWrapper";
 
+const GOLDENRATIO = 1.61803398875;
+
 function Frame(props, q = new THREE.Quaternion(), p = new THREE.Vector3()) {
-  const GOLDENRATIO = 1.61803398875;
   const { gl } = useThree();
 
-  // Change the color of the frame
   const frame = useRef();
   const [hovered, setHovered] = useState(false);
   useCursor(hovered);
   const { color } = useSpring({ color: hovered ? "orange" : "white" });
+  
 
   return (
     <group position={props.position} rotation={props.rotation}>
@@ -58,7 +59,7 @@ function Frame(props, q = new THREE.Quaternion(), p = new THREE.Vector3()) {
                 width={780}
                 height={900}
                 title="embed"
-                src={props.contentPath}
+                src={props.path}
               />
             </div>
           </Html>
@@ -68,7 +69,7 @@ function Frame(props, q = new THREE.Quaternion(), p = new THREE.Vector3()) {
             scale={[0.8, 0.9, 0.8]}
             raycast={() => null}
             position={[0, 0, 0.7]}
-            url={props.contentPath}
+            url={props.path}
           />
         )}
       </mesh>
@@ -85,30 +86,17 @@ function Frame(props, q = new THREE.Quaternion(), p = new THREE.Vector3()) {
         </Text>
         {props.isHTML ? (
           <>
+          {props.projects.slice(0, 3).map((project, index) => (
             <TextWrapper
-              position={[0, -0.1, 0]}
-              fontSize={0.035}
-              customColor1={"white"}
-              customColor2={"orange"}
-              text={props.website1}
-              onClick={props.changeWebsite1}
-            />
-            <TextWrapper
-              position={[0, -0.2, 0]}
-              fontSize={0.035}
-              customColor1={"white"}
-              customColor2={"orange"}
-              text={props.website2}
-              onClick={props.changeWebsite2}
-            />
-            <TextWrapper
-              position={[0, -0.3, 0]}
-              fontSize={0.035}
-              customColor1={"white"}
-              customColor2={"orange"}
-              text={props.website3}
-              onClick={props.changeWebsite3}
-            />
+            key={index}
+            position={[0, -0.1 - index/10, 0]}
+            fontSize={0.035}
+            customColor1={"white"}
+            customColor2={"orange"}
+            text={project.title}
+            onClick={(e) => (e.stopPropagation(), props.setPath(project.urls[0]))}
+          />
+          ))}
             <Text
               position={[0, -0.4, 0]}
               font="/Merriweather-Regular.ttf"
@@ -122,33 +110,18 @@ function Frame(props, q = new THREE.Quaternion(), p = new THREE.Vector3()) {
           </>
         ) : (
           <>
+          {props.urls.map((url, index) => (
             <TextWrapper
-              position={[0, -0.1, 0]}
-              fontSize={0.035}
-              customColor1={"white"}
-              customColor2={"orange"}
-              text={"Visit website"}
-              onClick={() => (window.open(props.url1))}
-            />
-            <TextWrapper
-              position={[0, -0.2, 0]}
-              fontSize={0.035}
-              customColor1={"white"}
-              customColor2={"orange"}
-              text={props.visible ? ("Client") : ('Github Repository')}
-              onClick={() => (window.open(props.url2))}
-            />
-            <TextWrapper
-              position={[0, -0.3, 0]}
-              fontSize={0.035}
-              customColor1={"white"}
-              customColor2={"orange"}
-              text={props.visible ? ("Server") : ("")}
-              visible={props.visible}
-              onClick={() => (window.open(props.url3))}
-            />
+            position={[0, -0.1 - index/10, 0]}
+            fontSize={0.035}
+            customColor1={"white"}
+            customColor2={"orange"}
+            text={props.project.urlDescription[index]}
+            onClick={() => (window.open(url))}
+          />
+          ))}
             <Text
-              position={props.visible ? ([0, -0.4, 0]) : ([0, -0.3, 0])}
+              position={props.urls.length === 3 ? ([0, -0.4, 0]) : ([0, -0.3, 0])}
               font="/Merriweather-Regular.ttf"
               maxWidth={0.5}
               anchorX="left"

@@ -7,10 +7,8 @@ export const projects = [
     title: 'Plantastic',
     description: "E-commerce website dedicated to providing a unique shopping experience for plant enthusiasts.\n\nFront-End: \n• React\n• Chart.js\n• MDBootstrap\n\nBack-End: \n• MongoDB\n• Express\n• Node.js\n• Stripe\n• Nodemailer\n• Cloudinary",
     textPosition: [0.85, 0.85, 0],
-    url1: 'https://plantastic-shop.netlify.app/',
-    url2: 'https://github.com/Ironhack-ThirdProject/Plantastic-client',
-    url3: 'https://github.com/Ironhack-ThirdProject/Plantastic-server',
-    visible: true
+    urls: ['https://plantastic-shop.netlify.app/', 'https://github.com/Ironhack-ThirdProject/Plantastic-client', 'https://github.com/Ironhack-ThirdProject/Plantastic-server'],
+    urlDescription: ['Visit website', 'Client', 'Server'],
   },
   {
     position: [-2, 0, -0.4],
@@ -20,10 +18,8 @@ export const projects = [
     title: 'Mingle',
     description: "Social media platform where users can connect with the world, share pictures, belong to communities and stay up-to-date on the latest information and trends.\n\nFront-End: \n• Handlebars\n• HTML\n• CSS\n• Bootstrap\n\nBack-End: \n• Node.js\n• Express\n• MongoDB\n• Cloudinary",
     textPosition: [0.65, 0.85, 0],
-    url1: 'https://mingle.adaptable.app/',
-    url2: 'https://github.com/Minglehackers/Mingle',
-    url3: '',
-    visible: false
+    urls: ['https://mingle.adaptable.app/', 'https://github.com/Minglehackers/Mingle'],
+    urlDescription: ['Visit website', 'Github Repository'],
   },
   {
     position: [2.3, 0, 2.1],
@@ -33,10 +29,8 @@ export const projects = [
     title: "Meow-Knight's Tale",
     description: "2D side-scrolling Role-Playing Game.\n\nTech Stack:\n• Vanilla Javascript\n• HTML Canvas\n• CSS",
     textPosition: [0.85, 0.85, 0],
-    url1: "https://marinedrp.github.io/Meow-Knight/",
-    url2: 'https://github.com/marinedrp/Meow-Knight',
-    url3: '',
-    visible: false
+    urls: ["https://marinedrp.github.io/Meow-Knight/", 'https://github.com/marinedrp/Meow-Knight'],
+    urlDescription: ['Visit website', 'Github Repository'],
   },
   {
     position: [2, 0, -0.4],
@@ -46,9 +40,7 @@ export const projects = [
     title: 'MY PORTFOLIO' ,
     description: "Front-End:\n• React Three Fiber (Renderer for Three.js)\n• React Spring\n\nBack-End:\n• Express\n• Node.js\n• Nodemailer",
     textPosition: [0.65, 0.85, 0],
-    url1: window.location,
-    url2: 'https://github.com/marinedrp/R3F-Portfolio',
-    url3: '',
-    visible: false
-  },
+    urls: [window.location, 'https://github.com/marinedrp/R3F-Portfolio'],
+    urlDescription: ['Visit website', 'Github Repository'],
+  }
 ];

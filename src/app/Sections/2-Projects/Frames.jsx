@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Frame from "./Frame";
 import { easing } from "maath";
 import { Center } from "@react-three/drei";
@@ -9,9 +9,9 @@ import { projects } from "./ProjectList";
 
 function Frames({ toggleScroll }) {
   const [clicked, setClicked] = useState(null);
+  const [path, setPath] = useState("/frame5.jpg");
   let q = new THREE.Quaternion();
   let p = new THREE.Vector3();
-  const [path, setPath] = useState("https://plantastic-shop.netlify.app/");
 
 
   useEffect(() => {
@@ -30,16 +30,12 @@ function Frames({ toggleScroll }) {
     easing.dampQ(state.camera.quaternion, q, 0.4, delta);
   });
 
-  // TODO disable scroll controls when a frame is clicked?
-
   const handleFrameClick = (e) => {
     e.stopPropagation();
     if (clicked === e.object) {
       setClicked(null);
-      // toggleScroll();
     } else {
       setClicked(e.object);
-      // toggleScroll();
     }
   };
 
@@ -54,18 +50,14 @@ function Frames({ toggleScroll }) {
       <Frame
         position={[0, 0, -1.2]}
         isHTML={true}
-        contentPath={path}
+        projects={projects}
+        setPath={setPath}
+        path={path}
         size={1.5}
         onClick={handleFrameClick}
         textPosition={[0.85, 0.85, 0]}
         description={"Please note that the websites are displayed in a responsive format optimized for tablet viewing.\n\n"}
         title={"SELECT A PROJECT"}
-        website1={projects[0].title}
-        changeWebsite1={(e) => (e.stopPropagation, setPath(projects[0].url1))}
-        website2={projects[1].title}
-        changeWebsite2={(e) => (e.stopPropagation, setPath(projects[1].url1))}
-        website3={projects[2].title + ' (Desktop only)'}
-        changeWebsite3={(e) => (e.stopPropagation, setPath(projects[2].url1))}
       />
       {/* vertical scroll: x: x, y: -8.2, z: z */}
 
@@ -75,17 +67,15 @@ function Frames({ toggleScroll }) {
           key={index}
           position={project.position}
           rotation={project.rotation}
-          contentPath={project.imagePath}
+          path={project.imagePath}
           size={project.size}
           isHTML={false}
           onClick={handleFrameClick}
           textPosition={project.textPosition}
           description={project.description}
-          url1={project.url1}
-          url2={project.url2}
-          url3={project.url3}
+          project={project}
+          urls={project.urls}
           title={project.title.toUpperCase()}
-          visible={project.visible}
         />
       </>
       ))}
