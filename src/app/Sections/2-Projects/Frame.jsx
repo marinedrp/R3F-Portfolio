@@ -15,6 +15,7 @@ function Frame(props, q = new THREE.Quaternion(), p = new THREE.Vector3()) {
   useCursor(hovered);
   const { color } = useSpring({ color: hovered ? "orange" : "white" });
   
+  
 
   return (
     <group position={props.position} rotation={props.rotation}>

@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { useCallback, useEffect, useState } from "react";
 import Frame from "./Frame";
 import { easing } from "maath";
@@ -12,7 +12,6 @@ function Frames({ toggleScroll }) {
   const [path, setPath] = useState("/frame5.jpg");
   let q = new THREE.Quaternion();
   let p = new THREE.Vector3();
-
 
   useEffect(() => {
     if (clicked) {
@@ -62,7 +61,6 @@ function Frames({ toggleScroll }) {
       {/* vertical scroll: x: x, y: -8.2, z: z */}
 
       {projects.map((project, index) => (
-        <>
         <Frame
           key={index}
           position={project.position}
@@ -77,7 +75,6 @@ function Frames({ toggleScroll }) {
           urls={project.urls}
           title={project.title.toUpperCase()}
         />
-      </>
       ))}
     </group>
   );

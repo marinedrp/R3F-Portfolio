@@ -17,8 +17,8 @@
 }
 
 .canvas{
-    background: #111113;
-    color:darkorchid;
+    background-color: #111113;
+    /* background-color: #111113; */
 }
 
 .main-div{
